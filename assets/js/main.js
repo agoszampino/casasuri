@@ -30,6 +30,8 @@
             img:"../img/tapadeasado.jpg",
         },        
     ];
+    
+ 
 
     const carrito = localStorage.carrito ? JSON.parse(localStorage.carrito) : [];
   
@@ -153,18 +155,57 @@
         carrito.splice(0, carrito.length);
         localStorage.carrito = JSON.stringify(carrito);
         cargaCarrito(); 
+        
+        $(".opcionesPago").hide();
+        $(".formularioEfectivo").hide();
+        $(".formularioTarjeta").hide();
     });
 
-    // ELEGIR EL METODO DE PAGO
+    // ELEGIR EL METODO DE PAGO Y SELECCIONAR UNA OPCION 
 
     $("#boton-comprar").click(function(){
-        $(".opcionesPago").show();
+        if (carrito.length > 0){
+            $(".opcionesPago").toggle();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Debes seleccionar agregar al menos un producto para finalizar la compra',   
+              })
+        }        
     });
-   
-
     
+    $("#efectivo").click(function(){
+        $(".formularioEfectivo").slideToggle();
+        $(".formularioTarjeta").hide();
+        $("#cart").hide();
+    });
+
+    $("#tarjeta").click(function(){
+        $(".formularioTarjeta").slideToggle();
+        $(".formularioEfectivo").hide();
+        $("#cart").hide();
+    });
+
+    // CONFIRMACION FINAL 
+
+    $(".cancelar").click(function(){
+        
+        $(".opcionesPago").hide();
+        $(".formularioTarjeta").hide();
+        $(".formularioEfectivo").hide();
+
+        carrito.splice(0, carrito.length);
+        localStorage.carrito = JSON.stringify(carrito);
+        cargaCarrito(); 
+
+    });
+
     mostrarProductos();
-    cargaCarrito();
+    cargaCarrito();    
+
+
+
 
     
     

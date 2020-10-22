@@ -228,6 +228,31 @@ body{
 			button:hover{
 				text-decoration: underline;
 			}	
-			
+			.formularioEfectivo{
+				display: none;
+				text-align: left;
+				button{
+					font-family: $tipografiaprincipal;
+					font-size: 2.5rem;
+					color: $colorsecundario;
+					border: none;
+					font-weight: bold;
+					background-color: $colorfondo;
+					margin: 1rem;								
+				}
+			}
+			.formularioTarjeta{
+				display: none;
+				text-align: left;
+				button{
+					font-family: $tipografiaprincipal;
+					font-size: 2.5rem;
+					color: $colorsecundario;
+					border: none;
+					font-weight: bold;
+					background-color: $colorfondo;
+					margin: 1rem;								
+				}
+			}	
 		}		
 	}

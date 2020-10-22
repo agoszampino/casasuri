@@ -7,9 +7,13 @@
     <title>Casa Suri</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="../assets/css/archivo.css">
     <link href="https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css"/>
+    <script src="//oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
+    <script src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="../assets/css/archivo.css">
     <meta name="description" content="Bienvenidos al menú de Casa Suri! Acá podes encontrar nuestros platos más populares. Admás todos los días, hacemos un plato especial">
     <meta name="keywords" content="comidas, saludable, comida argentina, vegetarianas, carne, pollo, platos de invierno, nutritvos, comida rica y sana, bebidas, parrillada, parrilla, al horno, pastas">        
   </head>
@@ -52,8 +56,8 @@
 
     <div class="container">
       <div class="row">
-          <main id="grillaDeProductos" class="col-sm-8"></main>
-          <aside class="col-sm-4">
+        <main id="grillaDeProductos" class="col-sm-8"></main>
+        <aside class="col-sm-4">
             <div class="cartStyle">
               <h2>Tu Pedido</h2>
               <ul id="cart" class="list-group"></ul>
@@ -65,13 +69,99 @@
                   <div class="mx-2">
                       <p>Elegí el método de pago:</p>
                       <div class="opciones">
-                          <button class="pago" id="efectivo"> Efectivo </button>
-                          <button class="pago" id="tarjeta"> Tarjeta </button>
+                        <button class="pago" id="efectivo"> Efectivo </button>
+                        <button class="pago" id="tarjeta"> Tarjeta </button>    
                       </div>
+                      <div class="formularioEfectivo">
+                        <form id="formEft" method="post" class="form-horizontal mitad" action="#">
+                          <div class="form-group">
+                            <label class="control-label">Nombre y Apellido</label>
+                              <input type="text" class="form-control" name="nombre" />
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Correo Electrónico</label>
+                            <input type="text" class="form-control" name="email" />    
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Número de teléfono</label>
+                            <input type="text" class="form-control" name="telefono" />    
+                          </div> 
+                          <div class="form-group">
+                            <button type="button" class="btn btn-default left cancelar">Cancelar</button>
+                          </div>
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-success left pagar">Pagar</button>
+                          </div> 
+                        </form> 
+                      </div>
+                      <div class="formularioTarjeta">
+                        <form id="formTc" method="post" class="form-horizontal mitad" action="#">
+                          <div class="form-group">
+                            <label class="control-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" name="tarjeta" />  
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Nombre y Apellido</label>
+                            <input type="text" class="form-control" name="nombre" />
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label" for="vencimiento">Fecha de Vencimiento</label>
+                            <select class="form-control" name="mes" id="mes" title="Mes">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>								
+                            </select>
+                            <select class="form-control" name="año" id="anio" title="Año">
+                              <option value="2020">2020</option>
+                              <option value="2021">2021</option>
+                              <option value="2022">2022</option>
+                              <option value="2023">2023</option>
+                              <option value="2024">2024</option>
+                              <option value="2025">2025</option>
+                              <option value="2026">2026</option>
+                              <option value="2027">2027</option>
+                              <option value="2028">2028</option>
+                              <option value="2029">2029</option>
+                              <option value="2030">2030</option>
+                            </select>    
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Codigo de Seguridad</label>
+                            <input type="text" class="form-control" name="codigoseg" />
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Número de documento</label>
+                            <input type="text" class="form-control" name="nrodoc" />
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Correo Electrónico</label>
+                            <input type="text" class="form-control" name="email" />    
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label">Número de teléfono</label>
+                            <input type="text" class="form-control" name="telefono" />    
+                          </div> 
+                          <div class="form-group">
+                            <button type="button" class="btn btn-default left cancelar">Cancelar</button>
+                          </div>
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-success left pagar">Pagar</button>
+                          </div> 
+                      </form>    
+                    </div>
                   </div>
               </div>
             </div>  
-          </aside>
+        </aside>
       </div>
     </div>  
     
@@ -95,7 +185,7 @@
           <div class="col-lg-2"></div>
           <div class="col-xs-12 col-md-12 col-lg-4">
             <div class="mapa">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3285.808091917631!2d-58.44778448468938!3d-34.55841406260958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1592170726159!5m2!1ses-419!2sar" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1642.906738864103!2d-58.44664703671655!3d-34.55827771429389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb569287a670d%3A0xca0ab2013c74e014!2sCasa%20Suri!5e0!3m2!1ses-419!2sar!4v1602203663218!5m2!1ses-419!2sar" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>       
           </div>                     
         </div>
@@ -105,7 +195,12 @@
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="//oss.maxcdn.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="../assets/js/validator.js"></script>
     <script src="../assets/js/main.js"></script>
   </body>
 </html>
