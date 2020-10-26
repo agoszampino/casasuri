@@ -6,145 +6,258 @@ $titulo: Casa Suri;
 $tipografiaprincipal: 'Seaweed Script', cursive;
 $tipografiasecundaria:'Merriweather', serif; 
 $dispositivopequeno: 767px;
-@mixin medium {
-  @media only screen and (max-width: 992px) {
-    @content;
+@mixin small {
+	@media only screen and (max-width: 767px) {
+	  @content;
+	}
   }
-}
-
-body{
-	background-color: $colorfondo;
-	@if $titulo == Casa Suri{
-			a{
-			color: $colorprincipal;
-			}
-	}		
-}
-
-.header{
-	position: sticky;
-	top:0;
-	width: 100%;
-	background-color: $colorfondo;
-	img{
-		float: left;
-		text-align: left;
-		@include medium{
-			display: none;
-		}
+  @mixin medium {
+	@media only screen and (min-width: 768px) and (max-width: 992px) {
+	  @content;
 	}
-	.tituloPrincipal{	    
-	    font-family: $tipografiaprincipal;
-	    text-align: left;
-	    font-size: 7.25rem;
-		margin:5rem 2.75rem 0 18rem;
-			a{
-			text-decoration: none;
-			}
-				a:hover{
-				color:$colorsecundario;
-				}
-		@include medium{
-	    	margin-right: 0;
-    		margin-left: 0;		
-		}		
-	}	
-	.subtitulo{
-		color:$colorsecundario; 
-		font-family: $tipografiaprincipal;
-		display: flex;
-		text-align: center;
-		position: relative;
-		justify-content: center;
-		margin: 2.5rem 0 2.5rem 0;
-		font-size: 3.5rem;
-		width: 100%;   
-	}		
-	.dropdown {
-		text-align:center;
-		font-size: 10rem;
-		position: relative;
-		button{
-			color:$colorprincipal;
-			background-color: $colorfondo;
-			border-color: $colorprincipal; 	
-			margin: auto;
-		}	
-			button:hover{
-				color: $colorprincipal;
-				background-color: $colorfondo;
-				border-color: $colorprincipal; 	
-				margin: auto;
-			}		
-		ul{
-			font-family: $tipografiasecundaria;
-			list-style: none;
-			font-size: 0;
-			background-color: $colorfondo;
-			li a{
-				color: $colorsecundario;
-				text-decoration: none;
-				font-family: $tipografiasecundaria;
-				list-style: none;
-				font-size: 2rem;
-				margin: 1rem;
-			}
-				a:hover{
-					color:$colortexto;
-					text-decoration: underline;
-				}
-			
-		}
+  }
+  
+  @mixin large {
+	@media only screen and (min-width: 993px) {
+	  @content;
 	}
-}
-
-.tituloPagina{
-	color: $colorsecundario; 
-	font-family: $tipografiaprincipal;
-	text-align: center;
-	font-size: 3.12rem;
-	display: block;
-	margin: 2.5rem 0;	
-}
-
-.footer{
-	height: 21.5rem;
-	width: 100%;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	overflow: visible;
-	border-top: 0.06rem $colortexto;
-	border-top-style: dashed;
-	margin-top: 1.25rem;	
-	p{
-		color:$colortexto;
-		font-family: $tipografiasecundaria;
-		text-align: justify;
-		font-size: 1.5rem;
-		margin: 1rem;
-		padding: 1rem;
-		white-space: pre-wrap;
-		align-content: center;
-		align-items: center;
-		@include medium{
-	   	text-align: center;	
-		}
-	}
-	.iconos{
-		margin: 1rem;
-		padding: 1rem;
-		text-align: center;
-	}
-	i{
-		color:$colorsecundario;
-		margin: 1rem;
-	}
-	.mapa iframe {
-		margin: 1.25rem 2.5rem auto 2.5rem;
-		align-items: center;
-	}	
-}
+  }
+  
+  body{
+	  background-color: $colorfondo;
+	  @if $titulo == Casa Suri{
+			  a{
+			  color: $colorprincipal;
+			  }
+	  }		
+  }
+  
+  .mobileHeader{
+	  nav{
+		  background-color: $colorfondo;
+		  border-style:none;	
+		  margin-left:0;
+		  margin-right:0;
+		  .navbar-header{
+			  li{
+				  list-style: none;	
+				  text-align: center;
+				  .btn{	
+					  color:$colorprincipal;
+					  background-color: $colorfondo;
+					  border-style: none; 	
+					  margin: auto;
+					  font-family: $tipografiaprincipal;
+					  font-size: 5rem;
+					  text-align: center;	
+					  text-decoration: none	
+				  }	
+				  .btn:hover{
+					  color: $colorprincipal;
+					  background-color: $colorfondo;
+					  border-style: none; 	
+					  margin: auto;
+				  }
+			  }	
+			  .collapse .well{
+				  background-color: $colorfondo;
+				  text-align: center;
+				  border-style: none;
+				  li a{
+				  color: $colorsecundario;
+				  text-decoration: none;
+				  font-family: $tipografiasecundaria;
+				  list-style: none;
+				  font-size: 2rem;
+				  margin: auto;
+				  display:inline;
+				  }
+			  }
+		  }
+	  }
+	  @include medium{
+		  display: none;	
+	  }	
+	  @include large{
+		  display: none;	
+	  }	
+  }			
+  
+  .header{
+	  top:0;
+	  width: 100%;
+	  background-color: $colorfondo;
+	  display: inline;
+	  img{
+		  float: left;
+		  text-align: left;	
+	  }
+	  .tituloPrincipal{	    
+		  font-family: $tipografiaprincipal;
+		  text-align: left;
+		  font-size: 7.25rem;
+		  margin:5rem 2.75rem 0 18rem;
+		  a{
+			  text-decoration: none;
+		  }
+		  a:hover{
+			  color:$colorsecundario;
+		  }		
+	  }	
+	  .subtitulo{
+		  color:$colorsecundario; 
+		  font-family: $tipografiaprincipal;
+		  display: flex;
+		  text-align: center;
+		  position: relative;
+		  justify-content: center;
+		  margin: 2.5rem 0 2.5rem 0;
+		  font-size: 3.5rem;
+		  width: 100%;   
+	  }		
+	  .dropdown {
+		  text-align:center;
+		  font-size: 10rem;
+		  button{
+			  color:$colorprincipal;
+			  background-color: $colorfondo;
+			  border-color: $colorprincipal; 	
+			  margin: auto;
+		  }	
+		  button:hover{
+			  color: $colorprincipal;
+			  background-color: $colorfondo;
+			  border-color: $colorprincipal; 	
+			  margin: auto;
+		  }		
+		  ul{
+			  position: absolute;
+			  top:100px;
+			  right:0;
+			  font-family: $tipografiasecundaria;
+			  list-style: none;
+			  font-size: 0;
+			  background-color: $colorfondo;
+			  li a{
+				  color: $colorsecundario;
+				  text-decoration: none;
+				  font-family: $tipografiasecundaria;
+				  list-style: none;
+				  font-size: 2rem;
+				  margin: 1rem;
+			  }
+			  a:hover{
+				  color:$colortexto;
+				  text-decoration: underline;
+			  }				
+		  }
+	  }	
+	  @include small{
+		  display: none;	
+	  }	
+  }
+  
+  .tituloPagina{
+	  color: $colorsecundario; 
+	  font-family: $tipografiaprincipal;
+	  text-align: center;
+	  font-size: 3.12rem;
+	  display: block;
+	  margin: 2.5rem 0;	
+  }
+  
+  .footer{
+	  height: 21.5rem;
+	  display: flex;
+	  flex-flow: row wrap;
+	  justify-content: space-between;
+	  overflow: visible;
+	  border-top: 0.06rem $colortexto;
+	  border-top-style: dashed;
+	  margin-top: 1.25rem;	
+	  p{
+		  color:$colortexto;
+		  font-family: $tipografiasecundaria;
+		  text-align: justify;
+		  font-size: 1.5rem;
+		  margin: 1rem;
+		  padding: 1rem;
+		  white-space: pre-wrap;
+		  @include medium{
+			 text-align: center;	
+		  }
+	  }
+	  .iconos{
+		  margin: 1rem;
+		  padding: 1rem;
+		  text-align: left;
+		  @include medium{
+			 margin: 1rem;
+		  padding: 1rem;
+		  text-align: center;
+		  position: relative;
+		  left: 30px;
+		  }
+	  }
+	  i{
+		  color:$colorsecundario;
+		  margin: 1rem;
+	  }
+	  .mapa iframe {
+		  margin: 1.25rem 2.5rem auto 2.5rem;
+		  align-items: center;
+		  @include medium{
+			 display: block;
+		  margin-right: 0;
+			 margin-left: 0;
+		  }
+	  }	
+	  @include small{
+		  display: none;	
+	  }
+  }
+  
+  .mobileFooter{
+	  display: flex;
+	  flex-flow: row wrap;
+	  justify-content: space-between;
+	  overflow: visible;
+	  border-top: 0.06rem $colortexto;
+	  border-top-style: dashed;
+	  margin-top: 1.25rem;	
+	  p{
+		  color:$colortexto;
+		  font-family: $tipografiasecundaria;
+		  text-align: center;
+		  font-size: 1.5rem;
+		  margin: 1rem;
+		  padding: 1rem;
+		  white-space: pre-wrap;
+	  }
+	  .iconos{
+			 margin-top: 1rem;
+		  padding: 1rem;
+		  text-align: center;
+		  position: relative;
+		  left: 30px;
+	  }
+	  i{
+		  color:$colorsecundario;
+		  margin: 1rem;
+	  }
+	  .mapa iframe {
+		  width: 100%;
+		  display: inline;
+		  text-align:center;	
+	  }	
+	  @include medium{
+		  display: none;	
+	  }
+	  @include large{
+		  display: none;	
+	  }
+  }
+  
 
 
 /* Menu */ 
@@ -256,3 +369,6 @@ body{
 			}	
 		}		
 	}
+
+
+	

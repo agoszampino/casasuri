@@ -1,37 +1,3 @@
-    const productos = [
-        {
-            producto: "Parrillada Especial",
-            precio: 600,
-            img:"../img/parrillada.jpg",
-        },
-        {
-            producto: "Gnocchi",
-            precio: 250,
-            img:"../img/gnocchi.jpg",
-        },
-        {
-            producto: "Super Mega Choripan",
-            precio: 200,
-            img:"../img/choripan.jpg",
-        },
-        {
-            producto: "Carre de Cerdo",
-            precio: 490,
-            img:"../img/carredecerdo.jpg",
-        },
-        {
-            producto: "Canastitas",
-            precio: 65,
-            img:"../img/canastitas.jpg",
-        },
-        {
-            producto: "Tapa de Asado",
-            precio: 650,
-            img:"../img/tapadeasado.jpg",
-        },        
-    ];
-    
- 
 
     const carrito = localStorage.carrito ? JSON.parse(localStorage.carrito) : [];
   
@@ -151,7 +117,7 @@
 
     // VACIA TODO EL CARRITO
 
-    $("#boton-vaciar").click(function(){
+    $(".boton-vaciar").click(function(){
         carrito.splice(0, carrito.length);
         localStorage.carrito = JSON.stringify(carrito);
         cargaCarrito(); 
@@ -187,19 +153,6 @@
         $("#cart").hide();
     });
 
-    // CONFIRMACION FINAL 
-
-    $(".cancelar").click(function(){
-        
-        $(".opcionesPago").hide();
-        $(".formularioTarjeta").hide();
-        $(".formularioEfectivo").hide();
-
-        carrito.splice(0, carrito.length);
-        localStorage.carrito = JSON.stringify(carrito);
-        cargaCarrito(); 
-
-    });
 
     mostrarProductos();
     cargaCarrito();    
